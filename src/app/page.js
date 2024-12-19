@@ -26,6 +26,11 @@ export default function Home() {
     setGiocatori(nuoviGiocatori);
   };
 
+    // Verifica se ci sono campi vuoti tra i giocatori
+    const sonoTuttiGiocatoriCompilati = () => {
+      return giocatori.every((giocatore) => giocatore.trim() !== "");
+    };
+
   // Genera le squadre
   const generaSquadre = () => {
     if (giocatori.length === 0 || numeroSquadre <= 0 || numeroSquadre > giocatori.length) {
@@ -60,6 +65,7 @@ export default function Home() {
                 onChange={(e) => aggiornaGiocatore(index, e.target.value)}
                 placeholder={`Player ${index + 1}`}
                 style={{width:"90%", marginLeft:"5%"}}
+                required
               />
               {giocatori.length > 1 && (
                 <button
@@ -96,9 +102,10 @@ export default function Home() {
             style={{marginLeft:"5%", marginRight: "5%", width:"90%"}}
           /><br/>
           <button 
-            className="bg-green-500 text-white p-2 rounded-md w-64 hover:bg-green-600 transition"
+           className={`p-2 rounded-md w-64 transition duration-300 ${!sonoTuttiGiocatoriCompilati() ? 'bg-gray-400 cursor-not-allowed' : 'bg-green-500 text-white hover:bg-green-600'}`}
             onClick={generaSquadre}
             style={{marginLeft:"5%", marginRight: "5%", width:"90%"}}
+            disabled={!sonoTuttiGiocatoriCompilati()} // Disabilita il bottone se ci sono campi vuoti
           >
             Generate
           </button>
