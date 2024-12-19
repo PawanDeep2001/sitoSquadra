@@ -52,19 +52,20 @@ export default function Home() {
         <h2 className="mb-3 text-gray-700 font-bold text-lg" style={{ width:"100%",textAlign:"center", color:"red"}}><b>Players</b></h2>
         <div>
           {giocatori.map((giocatore, index) => (
-            <div key={index} className="mb-2 flex items-center " style={{marginLeft:"5%"}}>
+            <div key={index} className="mb-2 flex items-center " >
               <input
                 className="border p-2 rounded-md w-64 mr-2 focus:ring-2 focus:ring-indigo-500 "
                 type="text"
                 value={giocatore}
                 onChange={(e) => aggiornaGiocatore(index, e.target.value)}
                 placeholder={`Player ${index + 1}`}
-                style={{width:"80%"}}
+                style={{width:"90%", marginLeft:"5%"}}
               />
               {giocatori.length > 1 && (
                 <button
                   className="bg-red-500 text-white p-2 rounded-md hover:bg-red-600 transition"
                   onClick={() => rimuoviCampoGiocatore(index)}
+                  style={{width:"20%", marginRight:"5%"}}
                 >
                   X
                 </button>
@@ -74,7 +75,7 @@ export default function Home() {
           <button 
             className="bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 transition"
             onClick={aggiungiCampoGiocatore}
-            style={{marginLeft:"5%", width:"76%"}}
+            style={{marginLeft:"5%", marginRight: "5%", width:"90%"}}
           >
             Add Player
           </button>
@@ -92,12 +93,12 @@ export default function Home() {
             onChange={(e) => setNumeroSquadre(Number(e.target.value))}
             min="1"
             max={giocatori.length}
-            style={{marginLeft:"5%", width:"76%"}}
+            style={{marginLeft:"5%", marginRight: "5%", width:"90%"}}
           /><br/>
           <button 
             className="bg-green-500 text-white p-2 rounded-md w-64 hover:bg-green-600 transition"
             onClick={generaSquadre}
-            style={{marginLeft:"5%", width:"76%"}}
+            style={{marginLeft:"5%", marginRight: "5%", width:"90%"}}
           >
             Generate
           </button>
@@ -108,9 +109,9 @@ export default function Home() {
       {squadre.length > 0 && (
         <div>
           <h2 className="text-gray-700 font-bold text-lg" style={{textAlign:"center", color:"red"}}><b>Teams</b></h2>
-          <div className="" style={{width:"80%",marginLeft:"1%"}}>
+          <div className="" style={{marginLeft:"5%", marginRight: "5%", width:"90%"}}>
             {squadre.map((squadra, index) => (
-              <div key={index} className="bg-gray-200 p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300" style={{marginLeft:"5%", marginBottom:"3%"}}>
+              <div key={index} className="bg-gray-200 p-4 rounded-lg shadow-sm hover:shadow-md transition duration-300" style={{ marginBottom:"3%"}}>
                 <h3 className="text-gray-800 font-semibold text-lg"><b>Team {index + 1}</b></h3>
                 <ul>
                   {squadra.map((giocatore, idx) => (
